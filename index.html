@@ -362,6 +362,7 @@
   .card-aethel-connect::before { background: linear-gradient(to right, #1d6a8f, #22d3ee); }
   .card-aethel-air::before { background: linear-gradient(to right, #1a5c8f, #818cf8); }
   .card-house-ntsoele::before { background: linear-gradient(to right, var(--gold), #e8c96a); }
+  .card-aethel-finance::before { background: linear-gradient(to right, #0f7a5c, #34d399); }
 
   .card-glow {
     position: absolute;
@@ -378,6 +379,7 @@
   .card-aethel-connect .card-glow { background: #22d3ee; top: -80px; right: -80px; }
   .card-aethel-air .card-glow { background: #818cf8; top: -80px; right: -80px; }
   .card-house-ntsoele .card-glow { background: var(--gold); top: -80px; right: -80px; }
+  .card-aethel-finance .card-glow { background: #34d399; top: -80px; right: -80px; }
 
   .division-icon {
     width: 52px;
@@ -415,6 +417,7 @@
   .card-aethel-connect .division-tagline { color: #22d3ee; }
   .card-aethel-air .division-tagline { color: #818cf8; }
   .card-house-ntsoele .division-tagline { color: var(--gold); }
+  .card-aethel-finance .division-tagline { color: #34d399; }
 
   .division-desc {
     font-size: 0.88rem;
@@ -437,6 +440,7 @@
   .card-aethel-connect .division-link { color: #22d3ee; }
   .card-aethel-air .division-link { color: #818cf8; }
   .card-house-ntsoele .division-link { color: var(--gold); }
+  .card-aethel-finance .division-link { color: #34d399; }
   .division-link:hover { gap: 14px; }
 
   /* ───────── PHILOSOPHY ───────── */
@@ -546,6 +550,7 @@
   .reveal-delay-2 { transition-delay: 0.2s; }
   .reveal-delay-3 { transition-delay: 0.3s; }
   .reveal-delay-4 { transition-delay: 0.4s; }
+  .reveal-delay-5 { transition-delay: 0.5s; }
 
   /* ───────── RESPONSIVE ───────── */
   @media (max-width: 900px) {
@@ -614,11 +619,11 @@
   <div class="reveal">
     <span class="section-tag">Our Story</span>
     <h2>A <em>holding company</em><br>built for the long arc</h2>
-    <p class="body-text">Aethelwine Homes (Pty) Ltd is a South African holding company uniting four distinct ventures under one sovereign vision: to build enduring, asset-backed businesses that generate value across energy, connectivity, travel, and lifestyle.</p>
+    <p class="body-text">Aethelwine Homes (Pty) Ltd is a South African holding company uniting five distinct ventures under one sovereign vision: to build enduring, asset-backed businesses that generate value across energy, finance, connectivity, travel, and lifestyle.</p>
     <p class="body-text" style="margin-top:12px;">We operate with the discipline of a toll-road model — each division commanding its own lane, all flowing toward a single destination: financial freedom and lasting legacy.</p>
     <div class="stat-grid">
       <div class="stat-box">
-        <div class="stat-num">4</div>
+        <div class="stat-num">5</div>
         <div class="stat-label">Active Divisions</div>
       </div>
       <div class="stat-box">
@@ -655,7 +660,7 @@
 <section id="divisions">
   <div class="divisions-header reveal">
     <span class="section-tag">Our Divisions</span>
-    <h2>Four Realms.<br><em>One House.</em></h2>
+    <h2>Five Realms.<br><em>One House.</em></h2>
     <p>Each division is strategically positioned to dominate its market — autonomous in operation, unified in purpose.</p>
   </div>
   <div class="divisions-grid">
@@ -679,8 +684,27 @@
       </a>
     </div>
 
+    <!-- Aethel Finance -->
+    <div class="division-card card-aethel-finance reveal reveal-delay-2">
+      <div class="card-glow"></div>
+      <div class="division-icon">
+        <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+          <circle cx="24" cy="24" r="22" stroke="#34d399" stroke-width="1.2" fill="rgba(52,211,153,0.08)"/>
+          <path d="M24 10v28M16 16h11a4 4 0 010 8H16M16 24h13a4 4 0 010 8H16" stroke="#34d399" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+      </div>
+      <span class="division-number">Division 02</span>
+      <h3 class="division-name">Aethel Finance</h3>
+      <p class="division-tagline">Business Funding · Working Capital</p>
+      <p class="division-desc">Connecting business owners to the working capital they need to grow. Through our partnerships with Business Partners and Lulalend, Aethel Finance helps qualifying businesses access funding facilities quickly and with minimal friction — turning approved capital into stock, equipment, staff, and expansion, without the slow grind of traditional bank finance.</p>
+      <a href="https://wa.me/message/YIBQATIAXP7UL1" target="_blank" rel="noopener noreferrer" class="division-link">
+        Enquire about funding
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+      </a>
+    </div>
+
     <!-- Aethel Connect -->
-    <div class="division-card card-aethel-connect reveal reveal-delay-2">
+    <div class="division-card card-aethel-connect reveal reveal-delay-3">
       <div class="card-glow"></div>
       <div class="division-icon">
         <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
@@ -690,18 +714,18 @@
           <path d="M24 8v4M36 24h-4M12 24H8" stroke="#22d3ee" stroke-width="1.2" stroke-linecap="round" opacity="0.5"/>
         </svg>
       </div>
-      <span class="division-number">Division 02</span>
+      <span class="division-number">Division 03</span>
       <h3 class="division-name">Aethel Connect</h3>
-      <p class="division-tagline">Connectivity · Wi-Fi · Enterprise</p>
-      <p class="division-desc">Delivering high-speed, premium internet connectivity through robust fixed wireless solutions. Aethel Connect operates as a high-growth digital service pillar within the Aethel portfolio—provisioning uncapped digital access directly to underserved communities, high-density residential estates, and commercial enterprises. As a dedicated internet service provider, we streamline the digital experience for the end-user, ensuring seamless connectivity, reliable uptime, and uninterrupted business continuity across South Africa.</p>
+      <p class="division-tagline">Connectivity · Wireless · Community</p>
+      <p class="division-desc">Helping homes and businesses get connected through fast, reliable wireless internet. Aethel Connect brings high-speed connectivity to underserved communities, high-density residential estates, and commercial enterprises — making it simple for people and businesses to get online and stay connected, with dependable uptime and support every step of the way.</p>
       <a href="https://wa.me/message/YIBQATIAXP7UL1" target="_blank" rel="noopener noreferrer" class="division-link">
-        Explore Connectivity
+        Get connected
         <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
       </a>
     </div>
 
     <!-- Aethel Air -->
-    <div class="division-card card-aethel-air reveal reveal-delay-3">
+    <div class="division-card card-aethel-air reveal reveal-delay-4">
       <div class="card-glow"></div>
       <div class="division-icon">
         <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
@@ -709,7 +733,7 @@
           <path d="M8 28l7-4 4 4 14-12-2 6 8-2-4 6-10 2-2 6-7-3-2 2" stroke="#818cf8" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
         </svg>
       </div>
-      <span class="division-number">Division 03</span>
+      <span class="division-number">Division 04</span>
       <h3 class="division-name">Aethel Air</h3>
       <p class="division-tagline">Travel · Corporate · Leisure</p>
       <p class="division-desc">A full-service travel agency delivering curated corporate and leisure travel experiences. Leveraging global partnerships and technology platforms, Aethel Air connects clients to the world with precision, exclusivity, and care — from business itineraries to bespoke international escapes.</p>
@@ -720,7 +744,7 @@
     </div>
 
     <!-- House of Ntsoele -->
-    <div class="division-card card-house-ntsoele reveal reveal-delay-4">
+    <div class="division-card card-house-ntsoele reveal reveal-delay-5">
       <div class="card-glow"></div>
       <div class="division-icon">
         <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
@@ -730,7 +754,7 @@
           <path d="M24 14v2M24 28v2M16 22h2M30 22h2" stroke="#C9A84C" stroke-width="1.1" stroke-linecap="round" opacity="0.6"/>
         </svg>
       </div>
-      <span class="division-number">Division 04</span>
+      <span class="division-number">Division 05</span>
       <h3 class="division-name">House of Ntsoele</h3>
       <p class="division-tagline">Lifestyle · Non-Alcoholic Wine · Luxury</p>
       <p class="division-desc">A premium non-alcoholic sparkling wine brand celebrating heritage, elegance, and conscious luxury. House of Ntsoele is crafted for those who demand sophistication without compromise — available wholesale for retailers, event operators, and discerning hospitality partners across Southern Africa.</p>
@@ -785,7 +809,7 @@
   <div class="whatsapp-card">
     <span class="section-tag">Connect Instantly</span>
     <h2>Message us on <em>WhatsApp</em></h2>
-    <p class="body-text" style="max-width: 600px; margin: 16px auto 0 auto;">For energy PPAs, connectivity solutions, travel bookings, House of Ntsoele wholesale or any enquiry — start a conversation with our team directly via WhatsApp.</p>
+    <p class="body-text" style="max-width: 600px; margin: 16px auto 0 auto;">For energy PPAs, business finance, connectivity solutions, travel bookings, House of Ntsoele wholesale or any enquiry — start a conversation with our team directly via WhatsApp.</p>
     <a href="https://wa.me/message/YIBQATIAXP7UL1" target="_blank" rel="noopener noreferrer" class="cta-btn whatsapp-btn">
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M2.5 21.5L4.8 16.5C3.6 14.7 3 12.8 3 10.9C3 6.5 6.5 3 10.9 3C15.3 3 18.8 6.5 18.8 10.9C18.8 15.3 15.3 18.8 10.9 18.8C9.1 18.8 7.4 18.2 5.9 17.1L2.5 21.5Z" stroke="white" stroke-width="1.5" fill="none"/>
