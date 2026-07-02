@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+  @page { size: A4; margin: 0; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    color:#1a2332;
+    -webkit-font-smoothing:antialiased;
+  }
+  .page {
+    width:210mm; min-height:297mm; position:relative;
+    page-break-after:always;
+    padding:0 14mm 0 14mm;
+  }
+  .page:last-child{page-break-after:auto;}
+  .content{ }
+
+  /* ---------- HEADER ---------- */
+  .header {
+    margin:0 -14mm 6mm -14mm;
+    background: linear-gradient(135deg, #0a1d3d 0%, #102a5c 55%, #1a4fa3 100%);
+    color:#fff;
+    padding:9mm 14mm 7mm 14mm;
+    position:relative;
+    overflow:hidden;
+  }
+  .header::after{
+    content:"";
+    position:absolute; right:-40px; top:-60px;
+    width:260px; height:260px; border-radius:50%;
+    background:rgba(255,255,255,0.06);
+  }
+  .brandrow{ display:flex; justify-content:space-between; align-items:flex-start; }
+  .wordmark{ font-size:30px; font-weight:800; letter-spacing:0.5px; line-height:1; }
+  .wordmark .a1{ color:#ffffff; }
+  .wordmark .a2{ color:#d4af37; }
+  .subbrand{ font-size:9px; letter-spacing:0.6px; color:#bcd2f5; margin-top:3px; font-weight:500; }
+  .tagline-row{ font-size:10.5px; color:#dce8fb; margin-top:1mm; font-weight:400; }
+  .agent-pill{
+    display:inline-block; margin-top:3mm; background:rgba(255,255,255,0.12);
+    border:1px solid rgba(255,255,255,0.35); border-radius:20px;
+    padding:2.2mm 5mm; font-size:9px; font-weight:600; letter-spacing:0.3px; color:#fff;
+  }
+  .partner-badge{
+    background:#ffffff; border-radius:8px; padding:3mm 4.5mm;
+    text-align:right; min-width:42mm;
+  }
+  .partner-badge .pb-label{ font-size:6.5px; color:#7a8aa3; letter-spacing:1px; font-weight:700; text-align:left; margin-bottom:1.5mm;}
+  .wiru-logo{ font-size:17px; font-weight:800; color:#0a1d3d; letter-spacing:0.3px; text-align:left;}
+  .wiru-logo span{ color:#1a6fd6; font-weight:800;}
+  .wiru-sub{ font-size:6.3px; color:#5c6c83; letter-spacing:1.2px; text-transform:uppercase; margin-top:0.5mm; text-align:left;}
+
+  .h1-row{ margin-top:6mm; }
+  .h1{ font-size:23px; font-weight:800; letter-spacing:0.5px; }
+  .h1-desc{ font-size:9.3px; color:#dce8fb; max-width:140mm; margin-top:1.5mm; line-height:1.4; }
+  .h1-desc b{ color:#fff; }
+
+  .rush-tag{
+    position:absolute; right:14mm; bottom:9mm;
+    background:#e8312f; color:#fff; font-size:9px; font-weight:700;
+    padding:2.5mm 4mm; border-radius:5px; letter-spacing:0.3px;
+  }
+  .rush-tag small{ display:block; font-size:6px; font-weight:500; color:#ffd9d8; letter-spacing:0.5px;}
+
+  /* ---------- STEPS ---------- */
+  .steps{ display:flex; margin-bottom:5mm; border-radius:6px; overflow:hidden; box-shadow:0 1px 3px rgba(0,0,0,0.08);}
+  .step{ flex:1; text-align:center; padding:2.3mm 0; font-size:9px; font-weight:700; letter-spacing:0.3px; color:#9aa7bb; background:#eef1f6;}
+  .step.active{ background:#1a4fa3; color:#fff; }
+
+  /* ---------- PACKAGE SECTION ---------- */
+  .pkg-block{ margin-bottom:4mm; }
+  .pkg-head{ display:flex; align-items:center; gap:4mm; margin-bottom:1.8mm; }
+  .pkg-tag{
+    font-size:12.5px; font-weight:800; letter-spacing:0.3px; color:#fff;
+    padding:1.6mm 5mm; border-radius:5px; min-width:32mm; text-align:center;
+  }
+  .tag-unreal{ background:#3a9ad9; }
+  .tag-prime{ background:#1a4fa3; }
+  .tag-pro{ background:#0a1d3d; }
+  .pkg-uses{ font-size:8px; color:#5c6c83; display:flex; gap:4mm; margin-left:3mm; }
+  .pkg-uses span{ font-weight:600; }
+  .pkg-uses span::before{ content:"\2022 "; color:#1a4fa3; font-weight:900; }
+
+  table.price-table{ width:100%; border-collapse:collapse; font-size:9px; }
+  table.price-table th{
+    background:#f3f6fa; color:#3a4762; text-align:left; font-size:7.8px;
+    letter-spacing:0.3px; padding:1.8mm 3mm; font-weight:700; border-bottom:1.5px solid #d8e1ee;
+  }
+  table.price-table th.dl::after{ content:" ↓"; }
+  table.price-table th.ul::after{ content:" ↑"; }
+  table.price-table td{ padding:1.6mm 3mm; border-bottom:1px solid #eef1f6; }
+  table.price-table tr:nth-child(even) td{ background:#fafbfd; }
+  table.price-table td.price{ font-weight:800; color:#0a1d3d; font-size:9.5px; }
+  table.price-table td b{ font-weight:700; }
+  table.price-table td.yes{ color:#1a8c4a; font-weight:700; }
+  table.price-table td.no{ color:#b0bac9; font-weight:600; }
+
+  .footer{
+    margin-top:auto;
+    padding-top:5mm; border-top:1px solid #e3e8f0;
+  }
+  .footer-row{ display:flex; justify-content:space-between; align-items:flex-start; gap:6mm; }
+  .footer-brand{ font-size:11px; font-weight:800; color:#0a1d3d; }
+  .footer-brand .sub{ font-size:7px; color:#6a7891; font-weight:500; display:block; margin-top:0.5mm;}
+  .footer-contact{ font-size:8px; color:#3a4762; text-align:right; line-height:1.5; }
+  .disclaimer{
+    font-size:5.6px; color:#8a96aa; line-height:1.45; margin-top:3mm; text-align:left;
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= PAGE 1 ================= -->
+<div class="page">
+<div class="content">
+  <div class="header">
+    <div class="brandrow">
+      <div>
+        <div class="wordmark"><span class="a1">AETHEL</span> <span class="a2">CONNECT</span></div>
+        <div class="subbrand">A DIVISION OF AETHELWINE HOMES (PTY) LTD</div>
+        <div class="tagline-row">Wireless Internet Solutions</div>
+        <div class="agent-pill">AUTHORISED SALES AGENT FOR WIRULINK</div>
+      </div>
+      <div class="partner-badge">
+        <div class="pb-label">OFFICIAL SERVICE PARTNER</div>
+        <div class="wiru-logo">wiru<span>link</span></div>
+        <div class="wiru-sub">wireless · fibre · voice · data</div>
+      </div>
+    </div>
+    <div class="h1-row">
+      <div class="h1">WIRELESS INTERNET</div>
+      <div class="h1-desc">We're redefining fast internet in your area, one connection at a time. Get the best <b>UNCAPPED</b> Wireless Internet, delivered with the best service on the block — powered by the RUSH Network using the latest Fixed Wireless Broadband technologies.</div>
+    </div>
+    <div class="rush-tag">RUSH<small>NETWORK</small></div>
+  </div>
+
+  <div class="steps">
+    <div class="step active">1. CHOOSE PACKAGE</div>
+    <div class="step">2. CHOOSE TERM</div>
+    <div class="step">3. CHOOSE ROUTER</div>
+  </div>
+
+  <!-- UNREAL -->
+  <div class="pkg-block">
+    <div class="pkg-head">
+      <div class="pkg-tag tag-unreal">UNREAL</div>
+      <div class="pkg-uses"><span>Home</span><span>Small Business</span></div>
+    </div>
+    <table class="price-table">
+      <tr><th class="dl">Download Speed</th><th class="ul">Upload Speed</th><th>FUP Threshold</th><th>Package Price</th></tr>
+      <tr><td>Up to <b>10 Mbps</b></td><td>1 to 2 Mbps</td><td>300GB</td><td class="price">R 219 pm</td></tr>
+      <tr><td>Up to <b>20 Mbps</b></td><td>2 to 4 Mbps</td><td>400GB</td><td class="price">R 289 pm</td></tr>
+      <tr><td>Up to <b>35 Mbps</b></td><td>3.5 to 7 Mbps</td><td>500GB</td><td class="price">R 359 pm</td></tr>
+      <tr><td>Up to <b>50 Mbps</b></td><td>5 to 10 Mbps</td><td>600GB</td><td class="price">R 409 pm</td></tr>
+      <tr><td>Up to <b>100 Mbps</b></td><td>10 to 20 Mbps</td><td>600GB</td><td class="price">R 709 pm</td></tr>
+    </table>
+  </div>
+
+  <!-- PRIME -->
+  <div class="pkg-block">
+    <div class="pkg-head">
+      <div class="pkg-tag tag-prime">PRIME</div>
+      <div class="pkg-uses"><span>Home</span><span>Small Business</span></div>
+    </div>
+    <table class="price-table">
+      <tr><th class="dl">Download Speed</th><th class="ul">Upload Speed</th><th>FUP Threshold</th><th>Package Price</th></tr>
+      <tr><td>Up to <b>10 Mbps</b></td><td>1 to 3 Mbps</td><td>750GB</td><td class="price">R 739 pm</td></tr>
+      <tr><td>Up to <b>20 Mbps</b></td><td>2 to 5 Mbps</td><td>1250GB</td><td class="price">R 1 059 pm</td></tr>
+      <tr><td>Up to <b>35 Mbps</b></td><td>3.5 to 10 Mbps</td><td>1500GB</td><td class="price">R 1 589 pm</td></tr>
+      <tr><td>Up to <b>50 Mbps</b></td><td>5 to 15 Mbps</td><td>2000GB</td><td class="price">R 2 119 pm</td></tr>
+      <tr><td>Up to <b>100 Mbps</b></td><td>10 to 25 Mbps</td><td>4000GB</td><td class="price">R 2 869 pm</td></tr>
+    </table>
+  </div>
+
+  <!-- PROFESSIONAL -->
+  <div class="pkg-block">
+    <div class="pkg-head">
+      <div class="pkg-tag tag-pro">PROFESSIONAL</div>
+      <div class="pkg-uses"><span>Home</span><span>Small Business</span><span>Enterprise</span></div>
+    </div>
+    <table class="price-table">
+      <tr><th class="dl">Download Speed</th><th class="ul">Upload Speed</th><th>FUP Threshold</th><th>Package Price</th></tr>
+      <tr><td>Up to <b>5 Mbps</b></td><td>1.25 to 2.5 Mbps</td><td>750GB</td><td class="price">R 1 169 pm</td></tr>
+      <tr><td>Up to <b>10 Mbps</b></td><td>2.5 to 5 Mbps</td><td>1000GB</td><td class="price">R 1 489 pm</td></tr>
+      <tr><td>Up to <b>15 Mbps</b></td><td>3.75 to 7.5 Mbps</td><td>1250GB</td><td class="price">R 1 809 pm</td></tr>
+      <tr><td>Up to <b>20 Mbps</b></td><td>5 to 10 Mbps</td><td>1500GB</td><td class="price">R 2 119 pm</td></tr>
+      <tr><td>Up to <b>35 Mbps</b></td><td>8.75 to 17.5 Mbps</td><td>2000GB</td><td class="price">R 2 869 pm</td></tr>
+      <tr><td>Up to <b>50 Mbps</b></td><td>12.5 to 25 Mbps</td><td>2500GB</td><td class="price">R 3 709 pm</td></tr>
+      <tr><td>Up to <b>100 Mbps</b></td><td>25 to 50 Mbps</td><td>5000GB</td><td class="price">R 4 669 pm</td></tr>
+    </table>
+  </div>
+  </div>
+
+  <div class="footer">
+    <div class="footer-row">
+      <div class="footer-brand">AETHEL CONNECT<span class="sub">A Division of Aethelwine Homes (Pty) Ltd</span></div>
+      <div class="footer-contact">
+        <b>0672882659</b> &nbsp;|&nbsp; aethelwinehomes@gmail.com<br>
+        7 Vic Toweel Street, Unitas Park, Vereeniging
+      </div>
+    </div>
+    <div class="disclaimer">
+      Aethel Connect is a division of Aethelwine Homes (Pty) Ltd and operates as an Authorised Sales Agent for WIRUlink. All products, package specifications, and pricing shown are official WIRUlink offerings. Product availability is subject to coverage, installation approval, and WIRUlink's Terms and Conditions. Aethel Connect and Aethelwine Homes (Pty) Ltd are independent entities and are not WIRUlink or part of the WIRUlink group of companies.
+      <br>*All pricing includes VAT and may change without notice. Service availability is subject to an on-site pre-installation survey. All 12- and 24-month orders are subject to affordability assessment. Month-to-Month packages terminated within the first 12 months incur a R2,500 early termination fee (including VAT). After reaching your package Fair Usage Policy (FUP) usage threshold during any month, your speed will automatically reduce to 4Mbps/1Mbps until the last day of the same month. Routers selected on a rental agreement remain the property of WIRUlink. ¹ For once-off equipment purchases on Month-to-Month (MtM) terms, a Buy Back Guarantee applies: 75% in Year 1, 50% in Year 2, 25% in Year 3, 10% in Year 4. Only a copy of business registration and ID is required for once-off equipment purchase. Full T&Cs available at www.wiru.co.za
+    </div>
+  </div>
+</div>
+
+<!-- ================= PAGE 2 ================= -->
+<div class="page">
+<div class="content">
+  <div class="header" style="padding-top:9mm; padding-bottom:7mm;">
+    <div class="brandrow">
+      <div>
+        <div class="wordmark" style="font-size:24px;"><span class="a1">AETHEL</span> <span class="a2">CONNECT</span></div>
+        <div class="subbrand">A DIVISION OF AETHELWINE HOMES (PTY) LTD</div>
+      </div>
+      <div class="partner-badge">
+        <div class="pb-label">OFFICIAL SERVICE PARTNER</div>
+        <div class="wiru-logo" style="font-size:15px;">wiru<span>link</span></div>
+        <div class="wiru-sub">wireless · fibre · voice · data</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="steps">
+    <div class="step">1. CHOOSE PACKAGE</div>
+    <div class="step active">2. CHOOSE TERM</div>
+    <div class="step">3. CHOOSE ROUTER</div>
+  </div>
+
+  <div style="font-size:9px; font-weight:700; color:#1a4fa3; letter-spacing:0.4px; margin-bottom:2mm;">APPLICABLE TO UNREAL, PRIME &amp; PROFESSIONAL PACKAGES</div>
+
+  <table class="price-table" style="margin-bottom:7mm;">
+    <tr><th></th><th>24 Months<br><span style="font-weight:400;">(monthly rental)</span></th><th>12 Months<br><span style="font-weight:400;">(monthly rental)</span></th><th>Month to Month<br><span style="font-weight:400;">(monthly rental)</span></th><th>Month to Month<br><span style="font-weight:400;">(once-off purchase)</span></th></tr>
+    <tr><td><b>Outdoor Installation</b></td><td class="price">R 279 pm</td><td class="price">R 299 pm</td><td class="price">R 319 pm</td><td class="price">R 11 049 (once-off)¹</td></tr>
+  </table>
+
+  <div class="steps" style="margin-bottom:5mm;">
+    <div class="step">1. CHOOSE PACKAGE</div>
+    <div class="step">2. CHOOSE TERM</div>
+    <div class="step active">3. CHOOSE ROUTER</div>
+  </div>
+
+  <div style="font-size:9px; font-weight:700; color:#1a4fa3; letter-spacing:0.4px; margin-bottom:2mm;">APPLICABLE TO UNREAL, PRIME &amp; PROFESSIONAL PACKAGES</div>
+
+  <table class="price-table" style="margin-bottom:2mm;">
+    <tr><th>Router</th><th>24 Months<br><span style="font-weight:400;">(monthly rental)</span></th><th>12 Months<br><span style="font-weight:400;">(monthly rental)</span></th><th>Month to Month<br><span style="font-weight:400;">(monthly rental)</span></th><th>Month to Month<br><span style="font-weight:400;">(once-off purchase)</span></th></tr>
+    <tr><td>No Router (use my own)</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+    <tr><td>Basic Router</td><td>R 29 pm</td><td>R 49 pm</td><td>R 29 pm*</td><td>R 369 (once-off)</td></tr>
+    <tr><td>Standard Router</td><td>R 69 pm</td><td>R 119 pm</td><td>R 49 pm*</td><td>R 1 199 (once-off)</td></tr>
+    <tr><td>Advanced Router</td><td>R 89 pm</td><td>R 159 pm</td><td>R 69 pm*</td><td>R 1 749 (once-off)</td></tr>
+    <tr><td>Mesh WiFi 100Mbps</td><td>R 149 pm</td><td>R 269 pm</td><td>R 119 pm*</td><td>R 2 869 (once-off)</td></tr>
+    <tr><td>Mesh WiFi 1000Mbps</td><td>R 189 pm</td><td>R 349 pm</td><td>-</td><td>R 3 799 (once-off)</td></tr>
+  </table>
+  <div style="font-size:6.5px; color:#8a96aa; margin-bottom:7mm;">*Includes Advanced Warranty and excludes once-off courier fee of R150.</div>
+
+  <div style="background:linear-gradient(135deg,#0a1d3d,#1a4fa3); color:#fff; text-align:center; padding:3.5mm 0; border-radius:6px 6px 0 0; font-size:16px; font-weight:800; letter-spacing:1px;">ADVANTAGES</div>
+  <table class="price-table" style="border:1px solid #d8e1ee;">
+    <tr><th>Package Details</th><th>Unreal</th><th>Prime</th><th>Professional</th></tr>
+    <tr><td><b>Uncapped</b></td><td class="yes">Yes</td><td class="yes">Yes</td><td class="yes">Yes</td></tr>
+    <tr><td><b>SLA</b></td><td>No (Best Effort)</td><td>No (Best Effort)</td><td>With Penalties</td></tr>
+    <tr><td><b>Response Time</b></td><td>Up to 3 Business Days</td><td>Up to 3 Business Days</td><td>8 Business Hours</td></tr>
+    <tr><td><b>Support</b></td><td>Help Desk (1st-Level)</td><td>Help Desk (1st-Level)</td><td>Priority (2nd-Level)</td></tr>
+    <tr><td><b>Fair Use Policy</b></td><td>MEDIUM (300GB–600GB)</td><td>HIGH (750GB–4000GB)</td><td>VERY HIGH (750GB–5000GB)</td></tr>
+    <tr><td><b>Upload Speed (up to)</b></td><td>20% of Download Speed</td><td>25 to 40% of Download Speed</td><td>50% of Download Speed</td></tr>
+    <tr><td><b>Connection Type</b></td><td>PtMP / Asynchronous</td><td>PtMP / Asynchronous</td><td>PtMP / Asynchronous</td></tr>
+    <tr><td><b>Assigned Account Executive</b></td><td class="no">No</td><td class="no">No</td><td class="yes">Yes</td></tr>
+    <tr><td><b>Public IP (IPv4 &amp; IPv6)</b></td><td>1 x Public IP (Dynamic)</td><td>1 x Public IP (Dynamic)</td><td>1 x FREE Static IP (valued at R115 pm)</td></tr>
+    <tr><td><b>Hosted PBX Extensions</b></td><td class="no">No</td><td class="no">No</td><td>10 x FREE Included (valued at R460 pm)</td></tr>
+    <tr><td><b>Powered by the RUSH Network</b></td><td class="yes">Yes</td><td class="yes">Yes</td><td class="yes">Yes</td></tr>
+  </table>
+  </div>
+
+  <div class="footer">
+    <div class="footer-row">
+      <div class="footer-brand">AETHEL CONNECT<span class="sub">A Division of Aethelwine Homes (Pty) Ltd</span></div>
+      <div class="footer-contact">
+        <b>0672882659</b> &nbsp;|&nbsp; aethelwinehomes@gmail.com<br>
+        7 Vic Toweel Street, Unitas Park, Vereeniging
+      </div>
+    </div>
+    <div class="disclaimer">
+      Aethel Connect is a division of Aethelwine Homes (Pty) Ltd and operates as an Authorised Sales Agent for WIRUlink. All products, package specifications, and pricing shown are official WIRUlink offerings. Product availability is subject to coverage, installation approval, and WIRUlink's Terms and Conditions. Aethel Connect and Aethelwine Homes (Pty) Ltd are independent entities and are not WIRUlink or part of the WIRUlink group of companies.
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
